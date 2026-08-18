@@ -3,139 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doros ROM | Samsung modifing</title>
+    <title>DorOs ROMs | dorukmertucar</title>
     <style>
-        /* Temel Tasarım (Samsung One UI havasında) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f9;
-            margin: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #050505; color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+        h1 { margin-bottom: 40px; font-size: 2.5rem; letter-spacing: -1px; }
+        
+        .carousel-container { width: 100%; max-width: 900px; position: relative; display: flex; align-items: center; }
+        
+        .rom-slider {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #333;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
+        .rom-slider::-webkit-scrollbar { display: none; }
 
-        header {
-            background: linear-gradient(135deg, #0078d4, #004a86);
-            color: white;
-            width: 100%;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 900px;
-            width: 90%;
-            margin-top: -30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
+        .rom-card {
+            min-width: 280px;
+            background: #111;
+            border: 1px solid #222;
             padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            text-align: center;
             transition: transform 0.3s;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        h1 { margin: 0; font-size: 2.5em; }
-        h2 { color: #0078d4; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-
-        .device-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* İndirme Butonu */
-        .download-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
+        .rom-card:hover { border-color: #444; }
+        .rom-card h2 { margin-bottom: 15px; color: #00d4ff; }
+        
+        .btn-download {
             display: inline-block;
-            transition: background 0.3s;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
 
-        .download-btn:hover {
-            background-color: #218838;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding-bottom: 30px;
-            color: #888;
-            font-size: 0.9em;
+        .nav-btn {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Doros ROM sitesi</h1>
-    <p>Samsung Galaxy Serisi İçin Özel Portlar ve Modlar</p>
-</header>
+    <h1>DorOs Projeleri</h1>
 
-<div class="container">
-    
-    <div class="card">
-        <div class="device-info">
-            <div>
-                <h2>Galaxy S3 Neo (I9301Q) icin</h2>
-                <p><strong>ROM İsmi:</strong> Doros s7 Port</p>
-                <p><strong>Sürüm:</strong> Android 7.1.1</p>
-               <p><strong>Özellikler:</strong> s7 Özellikleri, Aroma Installer, Süratli Performans.</p>
-           </div> 
-            <a href="https://www.mediafire.com/file/l0cfkkc70fh3wol/GT-I9301Q-s3ve3g-doross7rom.zip/file" class="download-btn" target="_blank">HEMEN İNDİR</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="device-info">
-            <div>
-                <h2>Galaxy s3 (I9300) icin</h2>
-                <p><strong>ROM İsmi:</strong> Doros Note 4 rom</p>
-                <p><strong>Sürüm:</strong> android 4.4.4</p>
-                <p><strong>Özellikler:</strong> Debloated (Gereksizler silindi), Root Dahil, Özelleştirilmiş Aroma.</p>
+    <div class="carousel-container">
+        <button class="nav-btn" onclick="document.getElementById('slider').scrollBy(-300, 0)">&#10094;</button>
+        
+        <div class="rom-slider" id="slider">
+            <div class="rom-card">
+                <h2>DorOs 4.0 Beta</h2>
+                <a href="#" class="btn-download">İndir</a>
             </div>
-            <a href="https://www.mediafire.com/file/hydi8p93hq9ypdg/doros-note4-final-1.0-i9300.zip/file" class="download-btn" target="_blank">HEMEN İNDİR</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>Kurulum Talimatı</h2>
-        <ol>
-            <li>TWRP Recovery'e girin.</li>
-            <li><strong>Wipe</strong> kısmından; Data, System, Cache seçip temizleyin.</li>
-            <li>ZIP dosyasını telefon hafızasından seçin.</li>
-            <li>Aroma Installer üzerinden seçeneklerinizi belirleyin ve kurun!</li>
-        </ol>
-    </div>
-<div clattps://ss="card">
-        <div class="device-info">
-            <div>
-                <h2>Galaxy S3 (I9300) icin doros saf android</h2>
-                <p><strong>ROM İsmi:</strong> doros 5.1.1</p>
-                <p><strong>Sürüm:</strong> Android 5.1.1 (v1.0)</p>
-                <p><strong>Özellikler:</strong> optimize edilmis saf android.</p>
+            <div class="rom-card">
+                <h2>DorOs 5.1.1</h2>
+                <a href="#" class="btn-download">İndir</a>
             </div>
-            <a href="www.mediafire.com/file/z5h30m0gru5sa24/DOROS-I9300-4.4.4-OFF%C4%B0CAL.zip" class="download-btn" target="_blank" style="background-color: #128000;">HEMEN İNDİR</a>
+            <div class="rom-card">
+                <h2>DorOs 4.3.1</h2>
+                <a href="#" class="btn-download">İndir</a>
+            </div>
+            <div class="rom-card">
+                <h2>DorOs S5 Port</h2>
+                <a href="#" class="btn-download">İndir</a>
+            </div>
         </div>
-    </div>
-</div>
 
-<footer>
-    &copy; 2026 Doruk Mert Ucar - Doros ROM
-</footer>
+        <button class="nav-btn" onclick="document.getElementById('slider').scrollBy(300, 0)">&#10095;</button>
+    </div>
 
 </body>
 </html>
